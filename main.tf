@@ -27,5 +27,5 @@ module "eks" {
   cluster_name    = "test"
   cluster_version = "1.20"
   vpc_id          = "vpc-5cac4721"
-  subnets         = ["subnet-bfb726b1", "subnet-6930ea48", "subnet-2f974849", "subnet-65a3cc28", "subnet-98e139c7", "subnet-2f6d8e1e"]
+  subnets         = ["subnet-bfb726b1", "subnet-6930ea48", "subnet-2f974849", "subnet-65a3cc28", "subnet-98e139c7"]
 }
