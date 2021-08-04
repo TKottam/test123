@@ -43,5 +43,50 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
   load_config_file       = false
-  version                = "~> 2.4"
+  version                = "~> 1.9"
+}
+
+resource "kubernetes_deployment" "example" {
+  metadata {
+    name = "project"
+    labels = {
+      test = "project"
+    }
+  }
+
+  spec {
+    replicas = 3
+
+    selector {
+      match_labels = {
+        test = "project"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          test = "project"
+        }
+      }
+
+      spec {
+        container {
+          image = "nginx:1.7.8"
+          name  = "example"
+
+          resources {
+            limits = {
+              cpu    = "0.5"
+              memory = "512Mi"
+            }
+            requests = {
+              cpu    = "250m"
+              memory = "50Mi"
+            }
+          }
+        }
+      }
+    }
+  }
 }
