@@ -46,6 +46,7 @@ provider "kubernetes" {
   version                = "~> 1.9"
 }
 
+
 resource "kubernetes_deployment" "example" {
   metadata {
     name = "project"
@@ -74,17 +75,6 @@ resource "kubernetes_deployment" "example" {
         container {
           image = "nginx:1.7.8"
           name  = "example"
-
-          resources {
-            limits = {
-              cpu    = "0.5"
-              memory = "512Mi"
-            }
-            requests = {
-              cpu    = "250m"
-              memory = "50Mi"
-            }
-          }
         }
       }
     }
