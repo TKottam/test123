@@ -205,4 +205,5 @@ resource "helm_release" "kube-prometheus" {
 
 output "grafana" {
   value = "${helm_release.grafana}"
+  sensitive = true
 }
