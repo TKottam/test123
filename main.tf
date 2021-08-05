@@ -204,5 +204,5 @@ resource "helm_release" "kube-prometheus" {
 }
 
 output "grafana" {
-  value = "${resourcekubernetes_pod.example}"
+  value = "${helm_release.grafana}"
 }
